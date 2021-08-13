@@ -43,16 +43,16 @@ Add line-by-line comments wheres prompted in the code below, explaining what eac
 # ------ WHAT HAPPENS HERE? ------ #
 # ------ comment line-by-line ---- #
 
-# The line below...
+# The line below is creating a vector with years 0 to 8 by increments of 1 year. 
 time_yr <- seq(from = 0, to = 8, by = 1)
 
-# The line below...
+# The line below is making an empty matrix that has the same number of columns as elements in the fish_year0 vector and the a row for each year.
 proj_year <- matrix(ncol = length(fish_year0), nrow = length(time_yr))
 
-# The line below...
+# The line below is taking the initial conditions and populating the first row of the empty matrix for time_0 because indexing is row, columns. So for this it is saying for row 1, across all columns.
 proj_year[1, ] <- fish_year0
 
-# The for loop below...
+# The for loop below takes every time row starting at 2 (because we already populated row 1 with the initial conditions) and populating each new row of proj_year with the results of the dot product of fish_leslie with the previous time period's conditions
 for (i in 2:length(time_yr)) {
   proj_year[i,] <- fish_leslie %*% proj_year[i-1,]
 }
